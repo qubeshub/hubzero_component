@@ -11,11 +11,12 @@ require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . 
 require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'View.php';
 require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'Exception' . DS . 'InvalidTaskException.php';
 require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'Exception' . DS . 'InvalidControllerException.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Base' . DS . 'Traits' . DS . 'AssetAware.php';
 
 use Qubeshub\Component\Exception\InvalidTaskException;
 use Qubeshub\Component\Exception\InvalidControllerException;
 use Hubzero\Base\Obj;
-use Hubzero\Document\Assets;
+use Qubeshub\Document\Assets;
 use ReflectionClass;
 use ReflectionMethod;
 use Lang;
@@ -41,7 +42,7 @@ use Lang;
  */
 class SiteController extends Obj implements ControllerInterface
 {
-	use \Hubzero\Base\Traits\AssetAware;
+	use \Qubeshub\Base\Traits\AssetAware;
 
 	/**
 	 * The name of the component derived from the controller class name
