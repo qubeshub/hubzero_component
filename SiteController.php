@@ -5,10 +5,13 @@
  * @license    http://opensource.org/licenses/MIT MIT
  */
 
-namespace Hubzero\Component;
+namespace Qubeshub\Component;
 
-use Hubzero\Component\Exception\InvalidTaskException;
-use Hubzero\Component\Exception\InvalidControllerException;
+include_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'ControllerInterface.php';
+include_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'View.php';
+
+use Qubeshub\Component\Exception\InvalidTaskException;
+use Qubeshub\Component\Exception\InvalidControllerException;
 use Hubzero\Base\Obj;
 use Hubzero\Document\Assets;
 use ReflectionClass;
@@ -119,6 +122,13 @@ class SiteController extends Obj implements ControllerInterface
 	 * @deprecated
 	 */
 	protected $_messageType = 'message';
+
+	/**
+	 * The active supergroup (used for template override)
+	 * 
+	 * @var string
+	 */
+	protected $_group = null;
 
 	/**
 	 * Constructor
@@ -319,9 +329,10 @@ class SiteController extends Obj implements ControllerInterface
 
 		// Instantiate a view with layout the same name as the task
 		$this->view = new View(array(
-			'base_path' => $this->_basePath,
-			'name'      => $name,
-			'layout'    => $layout
+			'base_path' 	=> $this->_basePath,
+			'name'      	=> $name,
+			'layout'    	=> $layout,
+			'override_path' => $this->getOverridePath()
 		));
 
 		// Set some commonly used vars
@@ -355,6 +366,7 @@ class SiteController extends Obj implements ControllerInterface
 		{
 			$config['layout'] = $layout;
 		}
+		$config['override_path'] = $this->getOverridePath();
 		$this->view = new View($config);
 
 		// Set some commonly used vars
@@ -371,6 +383,26 @@ class SiteController extends Obj implements ControllerInterface
 	public function getTask()
 	{
 		return $this->_task;
+	}
+
+	/**
+	 * Get the override path(s) for the view.
+	 *
+	 * @return  array  Array of strings
+	 */
+	public function getOverridePath()
+	{
+		$overridePath = array();
+		if (\App::has('template'))
+		{
+			$overridePath[] = \App::get('template')->path;
+		}
+		if (!empty($this->_group) && $this->_group->isSuperGroup())
+		{
+			$overridePath[] = PATH_APP . DS . 'site' . DS . 'groups' . DS . $this->_group->get('gidNumber') . DS . 'template';
+		}
+
+		return $overridePath;
 	}
 
 	/**

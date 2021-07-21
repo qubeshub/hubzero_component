@@ -5,7 +5,7 @@
  * @license    http://opensource.org/licenses/MIT MIT
  */
 
-namespace Hubzero\Component;
+namespace Qubeshub\Component;
 
 /**
  * Controller interface for components.

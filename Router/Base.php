@@ -5,7 +5,7 @@
  * @license    http://opensource.org/licenses/MIT MIT
  */
 
-namespace Hubzero\Component\Router;
+namespace Qubeshub\Component\Router;
 
 /**
  * Base component routing class

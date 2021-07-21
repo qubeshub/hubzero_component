@@ -5,10 +5,10 @@
  * @license    http://opensource.org/licenses/MIT MIT
  */
 
-namespace Hubzero\Component;
+namespace Qubeshub\Component;
 
-use Hubzero\Component\Exception\InvalidTaskException;
-use Hubzero\Component\Exception\InvalidControllerException;
+use Qubeshub\Component\Exception\InvalidTaskException;
+use Qubeshub\Component\Exception\InvalidControllerException;
 use Hubzero\Http\Response;
 use Hubzero\Utility\Date;
 use ReflectionClass;

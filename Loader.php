@@ -5,9 +5,9 @@
  * @license    http://opensource.org/licenses/MIT MIT
  */
 
-namespace Hubzero\Component;
+namespace Qubeshub\Component;
 
-use Hubzero\Component\Router\Legacy;
+use Qubeshub\Component\Router\Legacy;
 use Hubzero\Container\Container;
 use Hubzero\Config\Registry;
 use ReflectionClass;
