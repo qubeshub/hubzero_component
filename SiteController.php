@@ -7,8 +7,10 @@
 
 namespace Qubeshub\Component;
 
-include_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'ControllerInterface.php';
-include_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'View.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'ControllerInterface.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'View.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'Exception' . DS . 'InvalidTaskException.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Component' . DS . 'Exception' . DS . 'InvalidControllerException.php';
 
 use Qubeshub\Component\Exception\InvalidTaskException;
 use Qubeshub\Component\Exception\InvalidControllerException;
@@ -200,7 +202,7 @@ class SiteController extends Obj implements ControllerInterface
 		$this->_option = 'com_' . $this->_name;
 
 		// Determine the methods to exclude from the base class.
-		$xMethods = get_class_methods('\\Hubzero\\Component\\SiteController');
+		$xMethods = get_class_methods('\\Qubeshub\\Component\\SiteController');
 
 		// Get all the public methods of this class
 		foreach ($r->getMethods(ReflectionMethod::IS_PUBLIC) as $method)

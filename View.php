@@ -7,8 +7,10 @@
 
 namespace Qubeshub\Component;
 
-use Hubzero\View\View as AbstractView;
-use Hubzero\Document\Assets;
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'View' . DS . 'View.php';
+
+use Qubeshub\View\View as AbstractView;
+use Qubeshub\Document\Assets;
 
 /**
  * Class for a component View
