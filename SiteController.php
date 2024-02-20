@@ -145,6 +145,16 @@ class SiteController extends Obj implements ControllerInterface
 		$this->_message     = null;
 		$this->_messageType = 'message';
 
+		// Get group for possible override
+		if (Request::getCmd('cn'))
+		{
+			$group = \Hubzero\User\Group::getInstance(Request::getCmd('cn'));
+			if ($group->isSuperGroup())
+			{
+				$this->_group = $group;
+			}
+		}
+
 		// Get the reflection info
 		$r = new ReflectionClass($this);
 

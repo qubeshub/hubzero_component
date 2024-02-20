@@ -8,6 +8,7 @@
 namespace Qubeshub\Component;
 
 require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'View' . DS . 'View.php';
+require_once PATH_APP . DS . 'libraries' . DS . 'Qubeshub' . DS . 'Base' . DS . 'Traits' . DS . 'AssetAware.php';
 
 use Qubeshub\View\View as AbstractView;
 use Qubeshub\Document\Assets;
@@ -17,6 +18,8 @@ use Qubeshub\Document\Assets;
  */
 class View extends AbstractView
 {
+	use \Qubeshub\Base\Traits\AssetAware;
+	
 	/**
 	 * Layout name
 	 *
