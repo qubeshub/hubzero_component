@@ -149,7 +149,7 @@ class SiteController extends Obj implements ControllerInterface
 		if (Request::getCmd('cn'))
 		{
 			$group = \Hubzero\User\Group::getInstance(Request::getCmd('cn'));
-			if ($group->isSuperGroup())
+			if ($group && $group->isSuperGroup())
 			{
 				$this->_group = $group;
 			}
